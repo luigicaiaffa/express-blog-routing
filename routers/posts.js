@@ -15,7 +15,7 @@ router.get("/", (req, res) => {
 // show
 router.get("/:id", (req, res) => {
   const id = parseInt(req.params.id);
-  res.json(`Visualizza post con id ${id}`);
+  res.json(`Visualizza post con id: ${id}`);
 });
 
 // create
@@ -24,9 +24,19 @@ router.post("/", (req, res) => {
 });
 
 // update
+router.put("/:id", (req, res) => {
+  const id = parseInt(req.params.id);
+  res.json(`Modifica interamente il post con id: ${id}`);
+});
 
 // modify
+router.patch("/:id", (req, res) => {
+  const id = parseInt(req.params.id);
+  res.json(`Modifica parzialmente il post con id: ${id}`);
+});
 
 // delete
+
+
 
 module.exports = router;
