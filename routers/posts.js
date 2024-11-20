@@ -13,6 +13,10 @@ router.get("/", (req, res) => {
 });
 
 // show
+router.get("/:id", (req, res) => {
+  const id = parseInt(req.params.id);
+  res.json(`Visualizza post con id ${id}`);
+});
 
 // create
 
