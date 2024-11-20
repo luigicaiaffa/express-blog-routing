@@ -19,6 +19,9 @@ router.get("/:id", (req, res) => {
 });
 
 // create
+router.post("/", (req, res) => {
+  res.json("Crea un nuovo post");
+});
 
 // update
 
