@@ -52,7 +52,31 @@ router.patch("/:id", (req, res) => {
 // delete
 router.delete("/:id", (req, res) => {
   const id = parseInt(req.params.id);
-  res.json(`Elimina il post con id: ${id}`);
+
+  if (isNaN(id)) {
+    res.status(400).send({ error: "id not valid" });
+    return;
+  }
+
+  let indexOfPosts;
+  posts.forEach((post, index) => {
+    if (post.id === id) indexOfPosts = index;
+  });
+
+  const deletedPost = posts[indexOfPosts];
+
+  if (indexOfPosts || indexOfPosts === 0) {
+    posts.splice(indexOfPosts, 1);
+  } else {
+    res.status(404).send({ error: "element not found" });
+    return;
+  }
+
+  // res.json(`Elimina il post con id: ${id}`);
+  res.json({
+    deletedPost,
+    posts,
+  });
 });
 
 module.exports = router;
