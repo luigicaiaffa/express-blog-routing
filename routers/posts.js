@@ -36,7 +36,9 @@ router.patch("/:id", (req, res) => {
 });
 
 // delete
-
-
+router.delete("/:id", (req, res) => {
+  const id = parseInt(req.params.id);
+  res.json(`Elimina il post con id: ${id}`);
+});
 
 module.exports = router;
