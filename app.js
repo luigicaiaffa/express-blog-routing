@@ -7,7 +7,7 @@ app.use(express.static("public"));
 
 // # Array di post
 const path = require("path");
-const postsPath = path.join(__dirname, "posts");
+const postsPath = path.join(__dirname, "db", "postslist");
 const posts = require(postsPath);
 
 // # Rotte
