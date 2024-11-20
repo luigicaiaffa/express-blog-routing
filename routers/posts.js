@@ -8,14 +8,28 @@ const posts = require("../db/postslist.js");
 // # Rotte
 // index
 router.get("/", (req, res) => {
-  res.json("Lista dei post");
-  // res.json(posts);
+  // res.json("Lista dei post");
+  res.json(posts);
 });
 
 // show
 router.get("/:id", (req, res) => {
   const id = parseInt(req.params.id);
-  res.json(`Visualizza post con id: ${id}`);
+
+  if (isNaN(id)) {
+    res.status(400).send({ error: "id not valid" });
+    return;
+  }
+
+  const selectedPost = posts.find((post) => post.id === id);
+
+  if (!selectedPost) {
+    res.status(404).send({ error: "element not found" });
+    return;
+  }
+
+  // res.json(`Post con id: ${id}`)
+  res.json(selectedPost);
 });
 
 // create
